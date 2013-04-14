@@ -18,8 +18,6 @@ class MonitorExec
   attr_accessor :stdin, :stdout, :stderr, :pid, :ctx, :timeout, :cmd, :exit_status
   attr_accessor :stdout_txt, :stderr_txt, :proc_thr
 
-  TIMED_OUT = -1
-
   def initialize(cmd, timeout)
     @timeout = timeout
     @cmd = cmd
