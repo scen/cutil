@@ -1,6 +1,7 @@
 require 'commander/import'
 require_relative 'new'
 require_relative 'notify'
+require_relative 'cl'
 
 program :name, "cutil"
 program :version, "0.1"
@@ -26,8 +27,14 @@ end
 # compile a source file
 command :cl do |c|
   c.description = 'compiles a source file'
+  c.option '-m', 'compile with MSVC instead of g++'
   c.option '-d', 'compile in debug mode'
-  c.option '-s', 'compile with symbols'
+  c.option '-n', 'compile without optimization'
   c.when_called do |args, options|
+    if args.empty?
+      notify_error("file name missing")
+    else
+      compile_file(args.first, options.d, options.n, options.m)
+    end
   end
 end
