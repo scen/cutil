@@ -1,6 +1,5 @@
 require 'open3'
 require 'timeout'
-require 'stringio'
 require 'sys/proctable'
 
 require_relative 'notify'
